@@ -1,14 +1,5 @@
-const form = document.querySelector("#login-form");
-const usernameElement = document.querySelector("#username");
-const passwordElement = document.querySelector("#password");
-const rememberMeElement = document.querySelector("#remember-me");
-const signInButton = document.querySelector("#sign-in-button");
-
-console.log(form);
-console.log(usernameElement);
-console.log(passwordElement);
-console.log(rememberMeElement);
-console.log(signInButton);
+// perform a check on dashboard to see if user is logged in
+// check on login page if user is logged in and redirect automatically
 
 function logIn() {
   const username = usernameElement.value;
@@ -16,25 +7,47 @@ function logIn() {
 
   if (!isValidLogin(username, password)) {
     alert("invalid username or password");
-
     return;
   }
 
+  if (isToBeRemembered(rememberMeElement)) {
+    localStorage.setItem("stayLoggedIn", "true");
+  }
+
   localStorage.setItem("isLoggedIn", "true");
+
+  // redirect user to dashboard
+  alert("logged in");
 }
 
 function logOut() {
+  if (localStorage.stayLoggedIn) {
+    localStorage.removeItem("stayLoggedIn");
+  }
+
   localStorage.removeItem("isLoggedIn");
 }
 
-function storeDummyCredentials() {
-  const username = "jmenon";
-  const password = "launchven99";
+// split into 2 functions
+function isValidLogin(username, password) {
+  const credentials = localStorage.getItem("credentials");
 
-  const credentials = { username, password };
-  const serializedCredentials = JSON.stringify(credentials);
+  if (credentials === undefined) {
+    alert("No registered users");
+    return false;
+  }
 
-  localStorage.setItem("credentials", serializedCredentials);
+  const credentialsObj = JSON.parse(credentials);
+
+  credentialsObj.forEach((userObj) => {
+    const isValidUsername = userObj.username === username;
+    const isValidPassword = userObj.password === password;
+
+    if (isValidUsername && isValidPassword) {
+      return true;
+    }
+  });
+
+  alert("Invalid username or password");
+  return false;
 }
-
-function isValidLogin() {}
