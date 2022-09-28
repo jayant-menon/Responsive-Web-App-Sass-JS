@@ -26,7 +26,7 @@
         aliquam facere a perspiciatis veritatis nobis in eligendi quod? Ut culpa
         neque ea assumenda, quaerat nihil? Aliquam sed cum mollitia odit.
       </p>
-      <form action="">
+      <form id="login-form" action="">
         <p id="form-heading">PLEASE LOG IN</p>
         <fieldset>
           <label for="username">Username</label>
@@ -36,14 +36,15 @@
           <label for="password">Password</label>
           <input id="password" type="password" placeholder="Password" />
         </fieldset>
-        <fieldset id="remember-me">
-          <input type="checkbox" name="remember" id="remember" />
-          <label for="remember">Remember me</label>
+        <fieldset id="remember">
+          <input type="checkbox" name="remember-me" id="remember-me" />
+          <label for="remember-me">Remember me</label>
         </fieldset>
         <hr />
-        <button>Sign In</button>
+        <button id="sign-in-button">Sign In</button>
       </form>
     </main>
     <footer><p>&copy; 2022 RedPanda. All rights reserved.</p></footer>
+    <script src="/scripts/validate.js"></script>
   </body>
 </html>

@@ -51,7 +51,7 @@ footer {
   }
 }
 
-form {
+#login-form {
   background-color: white;
   border-radius: 10px;
   padding: 2rem;
@@ -65,7 +65,7 @@ form {
     margin: 2rem 1.3rem;
   }
 
-  #remember-me {
+  #remember {
     display: flex;
     flex-direction: row;
     margin-bottom: 2rem;
