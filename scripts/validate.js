@@ -1,22 +1,16 @@
 // perform a check on dashboard to see if user is logged in
 // check on login page if user is logged in and redirect automatically
+// implement normal login on session storage - make the user be
+// logged out when the tab is closed
+// what is a user-session?
+
+import { redirectToDash } from "./redirects.js";
 
 function logIn() {
-  const username = usernameElement.value;
-  const password = passwordElement.value;
-
-  if (!isValidLogin(username, password)) {
-    alert("invalid username or password");
-    return;
-  }
-
-  if (isToBeRemembered(rememberMeElement)) {
-    localStorage.setItem("stayLoggedIn", "true");
-  }
-
   localStorage.setItem("isLoggedIn", "true");
 
-  // redirect user to dashboard
+  redirectToDash();
+
   alert("logged in");
 }
 
@@ -28,26 +22,41 @@ function logOut() {
   localStorage.removeItem("isLoggedIn");
 }
 
-// split into 2 functions
 function isValidLogin(username, password) {
-  const credentials = localStorage.getItem("credentials");
+  const userDB = localStorage.getItem("credentials");
 
-  if (credentials === undefined) {
-    alert("No registered users");
+  if (!userDB) {
+    // return a particular error object and match in index.js
+    // alert("No registered users");
     return false;
   }
 
-  const credentialsObj = JSON.parse(credentials);
+  if (!isValidCredentials(userDB, username, password)) {
+    // return a particular error object and match in index.js
+    // alert("Invalid username or password");
+    return false;
+  }
 
-  credentialsObj.forEach((userObj) => {
-    const isValidUsername = userObj.username === username;
-    const isValidPassword = userObj.password === password;
+  return true;
+}
+
+function isValidCredentials(serializedDB, username, password) {
+  let isValid = false;
+
+  const users = JSON.parse(serializedDB);
+
+  users.forEach((user) => {
+    const isValidUsername = user.username == username;
+    const isValidPassword = user.password == password;
 
     if (isValidUsername && isValidPassword) {
-      return true;
+      isValid = true;
+      return;
     }
   });
 
-  alert("Invalid username or password");
-  return false;
+  // no match found
+  return isValid;
 }
+
+export { logIn, logOut, isValidLogin };
