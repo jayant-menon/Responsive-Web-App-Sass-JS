@@ -120,3 +120,28 @@ footer {
 #logo {
   margin: 2rem;
 }
+
+@media screen and (max-width: 600px) {
+  main {
+    margin-top: 2rem;
+  }
+
+  body {
+    background-size: initial;
+    background-position-x: center;
+  }
+
+  h1 {
+    width: 90%;
+  }
+
+  #main-descrip {
+    margin: 0;
+    width: 90%;
+  }
+
+  #login-form {
+    margin-top: 5rem;
+    width: 80%;
+  }
+}
