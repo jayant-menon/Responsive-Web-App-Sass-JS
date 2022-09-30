@@ -5,9 +5,94 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RP DashBoard</title>
+    <link rel="stylesheet" href="dist/dashboard.css" />
+    <script
+      src="https://kit.fontawesome.com/335beb06d2.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <h1>Welcome To The Dashboard!</h1>
+    <header>
+      <div class="logo">
+        <img id="logo" src="images/login/logo.png" alt="red pandas logo" />
+      </div>
+    </header>
+    <span class="top-bar"
+      ><i class="fa-solid fa-user-large fa-2x"></i
+      ><i class="fa-solid fa-caret-down"></i
+    ></span>
+    <section id="sidebar">
+      <article>
+        <p>Dashboard</p>
+        <i class="fa-solid fa-house"></i>
+      </article>
+      <hr />
+      <article>
+        <p>Products Catalog</p>
+        <i class="fa-solid fa-layer-group"></i>
+      </article>
+    </section>
+    <main>
+      <section class="progress">
+        <h2 class="progress-header">PROGRESS INFORMATION</h2>
+        <article class="profit">
+          <div class="details">
+            <div class="left-text">
+              <p>Total Profit</p>
+              <small>Profit</small>
+            </div>
+            <div class="right-text">$18M</div>
+          </div>
+          <progress value="65" max="100"></progress>
+          <div class="bottom-text">
+            <small>Change</small>
+            <small>65%</small>
+          </div>
+        </article>
+        <article class="feedback">
+          <div class="details">
+            <div class="left-text">
+              <p>Total Profit</p>
+              <small>Profit</small>
+            </div>
+            <div class="right-text">$18M</div>
+          </div>
+          <progress value="65" max="100"></progress>
+          <div class="bottom-text">
+            <small>Change</small>
+            <small>65%</small>
+          </div>
+        </article>
+        <article class="orders">
+          <div class="details">
+            <div class="left-text">
+              <p>Total Profit</p>
+              <small>Profit</small>
+            </div>
+            <div class="right-text">$18M</div>
+          </div>
+          <progress value="65" max="100"></progress>
+          <div class="bottom-text">
+            <small>Change</small>
+            <small>65%</small>
+          </div>
+        </article>
+        <article class="users">
+          <div class="details">
+            <div class="left-text">
+              <p>Total Profit</p>
+              <small>Profit</small>
+            </div>
+            <div class="right-text">$18M</div>
+          </div>
+          <progress value="65" max="100"></progress>
+          <div class="bottom-text">
+            <small>Change</small>
+            <small>65%</small>
+          </div>
+        </article>
+      </section>
+    </main>
     <script type="module" src="./scripts/dashboard.js"></script>
   </body>
 </html>
